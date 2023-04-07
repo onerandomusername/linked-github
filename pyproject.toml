@@ -9,7 +9,7 @@ description = "Allow linking GitHub accounts to Discord accounts"
 authors = ["onerandomusername <me@arielle.codes>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "role_linker", from = "src" }]
+packages = [{include = "role_linker"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -19,6 +19,9 @@ alembic = "^1.10.3"
 disnake = "^2.8.1"
 asyncpg = "^0.27.0"
 msgspec = "^0.14.0"
+uvicorn = "^0.21.1"
+httpx = "^0.23.3"
+environs = "^9.5.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.0.261"
@@ -44,13 +47,13 @@ line_length = 120
 lines_after_imports = 2
 multi_line_output = 3
 use_parentheses = true
-known_first_party = ["monty"]
+known_first_party = ["role_linker"]
 
-[tool.ruff.isort]
-known-first-party = ["monty"]
+[tool.ruff.flake8-bugbear]
+extend-immutable-calls = ["starlite.params.Parameter"]
 
 [tool.ruff]
-line-length = 100
+line-length = 120
 target-version = "py38"
 select = [
     "E", # pycodestyle
